@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101b2d" />
+    <meta
+      name="description"
+      content="A free 120-question randomized mock test for Generative AI for Computer Vision, covering all 12 units with instant scoring and answer review."
+    />
+    <meta property="og:title" content="Generative AI for Computer Vision Mock Test" />
+    <meta
+      property="og:description"
+      content="Attempt all 120 questions, submit your test, and review every correct and incorrect answer."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://genai-cv-120-mock-test.swoonyteal9.chatgpt.site" />
+    <title>Generative AI for Computer Vision Mock Test</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <main id="landing" class="landing shell">
+      <section class="hero-card">
+        <div class="eyebrow"><span class="pulse-dot"></span> Exam practice</div>
+        <h1>Generative AI for<br /><span>Computer Vision</span></h1>
+        <p class="hero-copy">
+          A complete 120-question mock test covering all 12 units. Every new attempt
+          rearranges the questions, then gives you a detailed answer review.
+        </p>
+
+        <div class="test-facts" aria-label="Test details">
+          <div><strong>120</strong><span>Questions</span></div>
+          <div><strong>12</strong><span>Units</span></div>
+          <div><strong>1</strong><span>Mark each</span></div>
+          <div><strong>∞</strong><span>Attempts</span></div>
+        </div>
+
+        <div class="start-actions">
+          <button id="startButton" class="button button-primary">Start mock test</button>
+          <button id="resumeButton" class="button button-secondary hidden">Resume attempt</button>
+        </div>
+        <p class="privacy-note">Your progress stays in this browser. No sign-in is required.</p>
+      </section>
+
+      <aside class="brief-card">
+        <p class="brief-number">12 / 12</p>
+        <h2>Full syllabus coverage</h2>
+        <ol class="unit-list">
+          <li><span>01</span> Generative AI Foundations</li>
+          <li><span>02</span> Neural Networks</li>
+          <li><span>03</span> Convolutional Neural Networks</li>
+          <li><span>04</span> Modern CNNs and Sequences</li>
+          <li><span>05</span> Course Scope and Applications</li>
+          <li><span>06</span> Generative Models</li>
+          <li><span>07</span> Transformers</li>
+          <li><span>08</span> ViTs and Autoencoders</li>
+          <li><span>09</span> GANs and Diffusion</li>
+          <li><span>10</span> LLMs and VLMs</li>
+          <li><span>11</span> CLIP and Multimodal AI</li>
+          <li><span>12</span> Agentic AI</li>
+        </ol>
+      </aside>
+    </main>
+
+    <main id="exam" class="exam hidden">
+      <aside id="examSidebar" class="exam-sidebar">
+        <div class="brand-row">
+          <div class="brand-mark">GV</div>
+          <div><strong>GenAI Vision</strong><span>Mock examination</span></div>
+          <button id="closeSidebar" class="icon-button mobile-only" aria-label="Close question navigator">×</button>
+        </div>
+
+        <div class="progress-panel">
+          <div class="progress-copy"><span>Progress</span><strong id="answeredLabel">0 / 120</strong></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <div class="status-key">
+            <span><i class="key-dot answered"></i>Answered</span>
+            <span><i class="key-dot flagged"></i>Flagged</span>
+          </div>
+        </div>
+
+        <div class="navigator-heading">
+          <h2>Questions</h2>
+          <button id="jumpUnanswered" class="text-button">Next unanswered</button>
+        </div>
+        <div id="questionGrid" class="question-grid" aria-label="Question navigator"></div>
+        <button id="sidebarSubmit" class="button button-primary submit-button" disabled>Submit test</button>
+      </aside>
+
+      <div id="sidebarScrim" class="sidebar-scrim hidden"></div>
+
+      <section class="exam-stage">
+        <header class="exam-topbar">
+          <button id="openSidebar" class="icon-button mobile-only" aria-label="Open question navigator">☰</button>
+          <div class="topbar-title"><span>Generative AI for Computer Vision</span><strong>Mock Test</strong></div>
+          <div class="elapsed"><span>Elapsed</span><strong id="timer">00:00:00</strong></div>
+        </header>
+
+        <div class="question-wrap">
+          <div class="question-meta">
+            <span id="questionCount">Question 1 of 120</span>
+            <button id="flagButton" class="flag-button" aria-pressed="false">☆ Flag for review</button>
+          </div>
+          <article class="question-card">
+            <h1 id="questionText"></h1>
+            <div id="options" class="options" role="radiogroup" aria-label="Answer choices"></div>
+          </article>
+          <div class="exam-actions">
+            <button id="previousButton" class="button button-secondary">← Previous</button>
+            <button id="nextButton" class="button button-primary">Next question →</button>
+          </div>
+          <p id="submitHint" class="submit-hint">Answer all 120 questions to unlock submission.</p>
+        </div>
+      </section>
+    </main>
+
+    <main id="results" class="results shell hidden">
+      <section class="score-card">
+        <div class="score-ring" id="scoreRing"><div><strong id="scorePercent">0%</strong><span>Your score</span></div></div>
+        <div class="score-copy">
+          <p class="eyebrow">Attempt complete</p>
+          <h1 id="resultHeading">Your result</h1>
+          <p id="resultSummary"></p>
+          <div class="score-stats">
+            <div><strong id="correctCount">0</strong><span>Correct</span></div>
+            <div><strong id="incorrectCount">0</strong><span>Incorrect</span></div>
+            <div><strong id="timeTaken">00:00</strong><span>Time taken</span></div>
+          </div>
+          <button id="newAttemptButton" class="button button-primary">Start a new randomized test</button>
+        </div>
+      </section>
+
+      <section class="review-section">
+        <div class="review-heading">
+          <div><p class="eyebrow">Answer review</p><h2>Every question, checked</h2></div>
+          <div class="review-controls">
+            <div class="segmented" role="group" aria-label="Filter answers">
+              <button class="filter-button active" data-filter="all">All</button>
+              <button class="filter-button" data-filter="incorrect">Incorrect</button>
+              <button class="filter-button" data-filter="correct">Correct</button>
+            </div>
+            <select id="unitFilter" aria-label="Filter by unit">
+              <option value="all">All units</option>
+            </select>
+          </div>
+        </div>
+        <div id="reviewList" class="review-list"></div>
+        <p id="emptyReview" class="empty-review hidden">No answers match these filters.</p>
+      </section>
+    </main>
+
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-card">
+        <p class="eyebrow">Final check</p>
+        <h2 id="modalTitle">Submit your test?</h2>
+        <p>You answered all 120 questions. Your answers cannot be changed after submission.</p>
+        <div class="modal-actions">
+          <button id="cancelSubmit" class="button button-secondary">Keep reviewing</button>
+          <button id="confirmSubmit" class="button button-primary">Submit and see score</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
